@@ -12,10 +12,10 @@ public class _Stream {
     public static void main(String[] args) {
 
         List<Person> people = List.of(
-                new Person("Sudip", 40, MALE),
-                new Person("Sachin", 35, MALE),
-                new Person("Dona", 45, FEMALE),
-                new Person("Shalini", 30, FEMALE)
+                new Person("Alice", 40, MALE),
+                new Person("Bob", 35, MALE),
+                new Person("Mary", 45, FEMALE),
+                new Person("Jini", 30, FEMALE)
         );
 
         /*Function<Person, String> personGenderFunction = person -> person.name;
@@ -36,9 +36,13 @@ public class _Stream {
         List<Person> personList = people.stream()
                 .sorted(Comparator.comparing(Person::getAge).thenComparing(Person::getGender).reversed())
                 .collect(Collectors.toList());
-        System.out.println(personList.forEach(person -> person.getName()));
+        personList.forEach(person -> {
+            System.out.println(person.getName());
+        });
 
 
+        boolean match = people.stream().anyMatch(person -> person.getAge() > 40);
+        System.out.println(match);
 
 
     }
