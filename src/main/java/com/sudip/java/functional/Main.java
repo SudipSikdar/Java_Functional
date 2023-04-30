@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static com.sudip.java.functional.Main.Gender.FEMALE;
 import static com.sudip.java.functional.Main.Gender.MALE;
@@ -12,12 +13,16 @@ public class Main {
 
     public static void main(String[] args) {
 
-        List<Person> people = List.of(
+        List<Person> people = Stream.of(
                 new Person("Sudip", MALE),
                 new Person("Sachin", MALE),
                 new Person("Dona", FEMALE),
                 new Person("Shalini", FEMALE)
-        );
+        ).toList();
+
+        Thread thread = new Thread(() ->{
+            System.out.println("test");
+        });
 
         System.out.println("Below is imperative approach");
         List<Person> femalList= new ArrayList<Person>();
